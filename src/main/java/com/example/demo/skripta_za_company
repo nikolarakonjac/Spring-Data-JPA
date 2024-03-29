@@ -1,0 +1,11 @@
+
+
+CREATE TABLE Company(
+    id INTEGER PRIMARY KEY,
+    uuid UUID,
+    pib VARCHAR(15) NOT NULL UNIQUE,
+    ziro_racun VARCHAR(20) NOT NULL UNIQUE,
+    ulica_broj VARCHAR(20),
+    grad VARCHAR(20)
+)
+

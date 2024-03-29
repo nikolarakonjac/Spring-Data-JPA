@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.UUID;
+
 @SpringBootApplication
 public class DemoApplication {
 
@@ -13,7 +15,11 @@ public class DemoApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(StudentRepository studentRepository){
+	CommandLineRunner commandLineRunner(
+			StudentRepository studentRepository,
+			CompanyRepository companyRepository
+			){
+
 		return args -> {
 			Student nikola = new Student(
 					"nikola",
@@ -32,6 +38,15 @@ public class DemoApplication {
 			else{
 				System.out.println("User not found.");
 			}
+
+			Company company = new Company(
+					UUID.randomUUID(),
+					"1234567890123",
+					"12345678901234567890",
+					"Beograd"
+			);
+
+			companyRepository.save(company);
 
 
 		};
